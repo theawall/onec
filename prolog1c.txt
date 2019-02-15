@@ -1,0 +1,3 @@
+HOMEWORK ONE C QUESTION ONE
+
+1.a. In prolog, an association list ...
