@@ -27,5 +27,12 @@ Write something into the hash table:
 Read the value back:
     (gethash 'name x) => TED
 
+----1e.
+The command sublis takes in an association list and a tree. For each leaf in the tree that matches a key in the association list, the leaf is replaced with the value associated with the key.
+
+(sublis '((one . 1) (two . 2)) '(one two three four)) => (1 2 THREE FOUR)
+
+In the example above, sublis takes an association list '((one . 1) (two . 2)) and replaces the values in the tree '(one two three four).
+
 
 
