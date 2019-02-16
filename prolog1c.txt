@@ -1,5 +1,25 @@
 HOMEWORK ONE C QUESTION ONE
 
-1a. An association list is a list of cons cells in which the children are associated with one another (as in a dictionary or map).
+----1a. 
+An association list is a list of cons cells in which the children are associated with one another (as in a dictionary or map). The car of each cons cell is the key and the cdr is the value associated with that key.
 
-1b. 
+----1b. 
+The assoc function returns the first cons cell in the association list whose cdr matches the item given in the first parameter to the assoc function.
+
+    (assoc 'r '((a . b) (c . d) 
+                (r . x) (s . y) 
+                (r . z)))
+
+In the example above, the assoc function returns the cons cell (r . x) because it is the first cons whose cdr matches the given symbol 'r.
+
+----1c.
+The mapcar function applies a function to the elements of a given list. 
+
+    (mapcar '1- '(1 2 3)) => (0 1 2)
+
+In the example above, the mapcar function applies the function 1- on each element of the given list.
+
+
+
+
+
