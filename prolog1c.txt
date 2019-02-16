@@ -1,4 +1,4 @@
-HOMEWORK ONE C QUESTION ONE
+HOMEWORK ONE C
 
 ----1a. 
 An association list is a list of cons cells in which the children are associated with one another (as in a dictionary or map). The car of each cons cell is the key and the cdr is the value associated with that key.
@@ -19,7 +19,13 @@ The mapcar function applies a function to the elements of a given list.
 
 In the example above, the mapcar function applies the function 1- on each element of the given list.
 
-
+----1d.
+Create a hash table:
+    (setq x (make-hash-table))
+Write something into the hash table:
+    (setf (gethash 'name x) 'ted)
+Read the value back:
+    (gethash 'name x) => TED
 
 
 
