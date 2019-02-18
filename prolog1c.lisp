@@ -113,6 +113,15 @@ need to fix something inside `data0`.
 
 |#
 
+;;; new "known function" for part 2a
+(defun known (a alist)
+  ;; if no assoc match is found, return the symbol
+  (if (eq (assoc a alist) nil)
+      a
+    ;; if an assoc match exists, recurse with the new symbol
+    (known (cdr (assoc a alist)) alist)))
+
+
 (defvar *rules* (make-hash-table))
 
 (defmacro <- (con &optional ant)
