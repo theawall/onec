@@ -166,6 +166,7 @@ need to fix something inside `data0`.
         (male ?x)))
   (<- (sibling ?x ?y) 
       (and (parent ?z ?x)
+           (not (= ?x ?y)) ; check that x and y are not the same person
            (parent ?z ?y))))
 
 
@@ -226,9 +227,15 @@ need to fix something inside `data0`.
     (or   (ors         (cdr  expr)            binds))
     (not  (negation    (cadr expr)            binds))
     (do   (evals       (cadr expr)            binds))
+    (print (show       (car  expr)            binds)) ; 3a, print the current binding
     (t    (prove1      (car  expr) (cdr expr) binds))))
 
 ;--------- --------- --------- --------- --------- --------- ---------
+
+;;; function 'show' for 3a
+(defun show (goals)
+  t)
+
 (defun ands (goals binds)
   (if (null goals)
       (list binds)
