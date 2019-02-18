@@ -234,7 +234,7 @@ need to fix something inside `data0`.
 
 ;;; function 'show' for 3a
 (defun show (goals)
-  t)
+  (list goals))
 
 (defun ands (goals binds)
   (if (null goals)
