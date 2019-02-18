@@ -121,6 +121,13 @@ need to fix something inside `data0`.
     ;; if an assoc match exists, recurse with the new symbol
     (known (cdr (assoc x bindings)) bindings)))
 
+;;; new "has-vars" function for part 2b
+(defun has-vars (lst)
+  (cond 
+    ((null lst) nil) ; if the list is nil, return it
+    ((var? lst) (list lst)) ; if the list is a var, return it as a list
+    ((atom lst) nil) ; if the list is an atom, return nil
+    (t (union (has-vars (car lst)) (has-vars(cdr lst)))))) ; recurse and union the lists
 
 (defvar *rules* (make-hash-table))
 
