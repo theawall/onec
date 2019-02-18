@@ -206,7 +206,7 @@ need to fix something inside `data0`.
 
 (defun prove (expr &optional binds)
   (case (car expr)
-    (and  (ands        (reverse (cdr expr))   binds))
+    (and  (ands        (reverse (cdr expr))   binds)) ; we reverse the rest of the expr 
     (or   (ors         (cdr  expr)            binds))
     (not  (negation    (cadr expr)            binds))
     (do   (evals       (cadr expr)            binds))
