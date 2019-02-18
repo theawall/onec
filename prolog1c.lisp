@@ -114,12 +114,12 @@ need to fix something inside `data0`.
 |#
 
 ;;; new "known function" for part 2a
-(defun known (a alist)
+(defun known (x bindings)
   ;; if no assoc match is found, return the symbol
-  (if (eq (assoc a alist) nil)
-      a
+  (if (eq (assoc x bindings) nil)
+      x
     ;; if an assoc match exists, recurse with the new symbol
-    (known (cdr (assoc a alist)) alist)))
+    (known (cdr (assoc x bindings)) bindings)))
 
 
 (defvar *rules* (make-hash-table))
