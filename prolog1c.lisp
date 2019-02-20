@@ -166,8 +166,8 @@ need to fix something inside `data0`.
         (male ?x)))
   (<- (sibling ?x ?y) 
       (and (parent ?z ?x)
-           (not (= ?x ?y)) ; check that x and y are not the same person
-           (parent ?z ?y))))
+           (parent ?z ?y)
+           (not (= ?x ?y)))))
 
 
 ;--------- --------- --------- --------- --------- --------- ---------
@@ -222,7 +222,7 @@ need to fix something inside `data0`.
    ,@body))))
 
 (defun prove (expr &optional binds)
-  ;(let ((x (print expr)))
+  ;(let ((x (print binds)))
     (case (car expr)
     (and  (ands        (reverse (cdr expr))   binds)) ; we reverse the rest of the expr 
     (or   (ors         (cdr  expr)            binds))
