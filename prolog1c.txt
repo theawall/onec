@@ -37,23 +37,17 @@ For each leaf in the tree that matches a key in the association list, the leaf i
 In the example above, sublis takes an association list '((one . 1) (two . 2)) and replaces the values in the tree '(one two three four).
 
 ----1f.
-
-
+"binds" holds a list of the bindings, which prolog uses to trace possible values for variables. 
+A list is necessary because one variable could bind to zero or many things.
 
 
 ----1g.
-The '=' predicate returns true if the two parameters evaluate to the same value.
+?x is by definition equal to ?x. In this rule, implicitly, only bindings with the same value will
+cause this to evaluate to true.
 
 ----1h.
 The function (gensym "?") returns a unique symbol with the prefix "?".
 
 ----1i.
-We need variable renaming so that our variables don't always evaluate to the same thing.
-In the example,
-
-    (<- (child ?x ?y) (parent ?y ?x))
-    (<- (daughter ?y ?x) (and (child ?y ?x) (female ?y)))
-
-The parameters ?x and ?y are swapped in between these functions.
-We need a way to abstract the syntax from their meaning.
-
+daughter and child will be referenced often in the same context. The bindings will not obey a stack
+format and will therefore need to have their variables renamed to avoid clashes.
