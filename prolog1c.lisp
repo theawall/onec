@@ -222,19 +222,21 @@ need to fix something inside `data0`.
    ,@body))))
 
 (defun prove (expr &optional binds)
-  (case (car expr)
+  ;(let ((x (print expr)))
+    (case (car expr)
     (and  (ands        (reverse (cdr expr))   binds)) ; we reverse the rest of the expr 
     (or   (ors         (cdr  expr)            binds))
     (not  (negation    (cadr expr)            binds))
     (do   (evals       (cadr expr)            binds))
-    (print (show       (car  expr)            binds)) ; 3a, print the current binding
-    (t    (prove1      (car  expr) (cdr expr) binds))))
+    (>    (greater-than   (cdr  expr)            binds))
+    (t    (prove1      (car  expr) (cdr expr) binds))));)
 
 ;--------- --------- --------- --------- --------- --------- ---------
 
 ;;; function 'show' for 3a
-(defun show (goals)
-  (list goals))
+(defun show (expr)
+  (format t "[~D]~%" expr))
+
 
 (defun ands (goals binds)
   (if (null goals)
@@ -250,6 +252,10 @@ need to fix something inside `data0`.
 (defun negation (goal binds)
   (unless (prove goal binds)
     (list binds)))
+   
+(defun greater-than (expr binds)
+  (when (> (known (car expr) binds) (cadr expr)) (list binds)) 
+)
 
 (defun evals (expr binds)
   " turns e.g. (print (list ?a ?b)) into
